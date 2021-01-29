@@ -1,1 +1,1 @@
-# React Native Testing and Learing Project
+# React Native Testing and Learning Project
