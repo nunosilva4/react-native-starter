@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Text, View, FlatList, Image, TouchableWithoutFeedback } from 'react-native';
 
-export default function Video() {
+export default function Video({ navigation }) {
 
     const [videoList, setVideoList] = useState({ listLoaded: false });
 
@@ -31,6 +31,7 @@ export default function Video() {
                                 title={item.snippet.title}
                                 id={item.id.videoId}
                                 imageSrc={item.snippet.thumbnails.high.url}
+                                navigation={navigation}
                             />
                         }
                     />
@@ -39,7 +40,7 @@ export default function Video() {
 
             {!videoList.listLoaded && (
                 <View style={{ paddingTop: 30 }}>
-                    <Text style={{fontSize: 25, textAlign: 'center'}}>LOADING</Text>
+                    <Text style={{ fontSize: 25, textAlign: 'center' }}>LOADING</Text>
                 </View>
             )}
 
@@ -49,7 +50,7 @@ export default function Video() {
 
 export function TubeItem(props) {
 
-    let onPress = () => console.log(props.id);
+    let onPress = () => props.navigation.navigate('VideoDetail', { youtubeId: props.id });
 
     return (
         <TouchableWithoutFeedback onPress={onPress}>
@@ -58,7 +59,7 @@ export function TubeItem(props) {
                     style={{ width: '100%', height: 200 }}
                     source={{ uri: props.imageSrc }}
                 />
-                <Text style={{textAlign: 'center', fontSize: 15, fontWeight: 'bold'}}>
+                <Text style={{ textAlign: 'center', fontSize: 15, fontWeight: 'bold' }}>
                     {props.title}
                 </Text>
             </View>
