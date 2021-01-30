@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import Header from '../sections/Header.js';
 import Avatar from '../sections/Avatar.js';
 import Menu from '../sections/Menu.js';

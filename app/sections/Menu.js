@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, Alert, TouchableOpacity } from 'react-native';
 
-export default function Menu({navigation}) {
+export default function Menu({ navigation }) {
 
     let onPress = () => {
         Alert.alert('Why Hello There !');
@@ -14,8 +14,8 @@ export default function Menu({navigation}) {
                 <TouchableOpacity style={styles.buttonStyles} onPress={() => navigation.navigate('Contact')}>
                     <Text style={styles.buttonText}>CONTACT</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.buttonStyles} onPress={onPress}>
-                    <Text style={styles.buttonText}>SECOND</Text>
+                <TouchableOpacity style={styles.buttonStyles} onPress={() => navigation.navigate('Video')}>
+                    <Text style={styles.buttonText}>MEME VIDEOS</Text>
                 </TouchableOpacity>
             </View>
 
