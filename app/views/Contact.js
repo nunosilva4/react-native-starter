@@ -76,14 +76,16 @@ const styles = StyleSheet.create({
         width: '80%',
         borderBottomColor: '#000',
         borderBottomWidth: 2,
-        textAlign: 'center'
+        textAlign: 'center',
+        fontSize: 20
     },
     multiInput: {
         flex: 2,
         width: '80%',
         borderBottomColor: '#000',
         borderBottomWidth: 2,
-        textAlign: 'center'
+        textAlign: 'center',
+        fontSize: 20
     },
     buttons: {
         marginTop: 15,
@@ -91,6 +93,9 @@ const styles = StyleSheet.create({
         borderColor: 'black',
         borderWidth: 2,
         padding: 5,
-        backgroundColor: 'salmon'
+        backgroundColor: 'salmon',
+        minWidth: '50%',
+        textAlign: 'center',
+        borderRadius: 4
     }
 });

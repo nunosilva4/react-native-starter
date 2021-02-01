@@ -3,7 +3,8 @@ import 'react-native-gesture-handler';
 import Home from './app/views/Home.js';
 import Contact from './app/views/Contact.js';
 import Video from './app/views/Video.js';
-import VideoDetail from './app/views/VideoDetail.js'
+import VideoDetail from './app/views/VideoDetail.js';
+import Register from './app/views/Register.js';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
@@ -18,6 +19,7 @@ export default function App() {
         <Stack.Screen name='Contact' component={Contact}/>
         <Stack.Screen name='Video' component={Video}/>
         <Stack.Screen name='VideoDetail' component={VideoDetail}/>
+        <Stack.Screen name='Register' component={Register}/>
       </Stack.Navigator>      
     </NavigationContainer>
   );

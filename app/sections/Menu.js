@@ -14,14 +14,14 @@ export default function Menu({ navigation }) {
                 <TouchableOpacity style={styles.buttonStyles} onPress={() => navigation.navigate('Contact')}>
                     <Text style={styles.buttonText}>CONTACT</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.buttonStyles} onPress={() => navigation.navigate('Video')}>
-                    <Text style={styles.buttonText}>MEME VIDEOS</Text>
+                <TouchableOpacity style={styles.buttonStyles} onPress={() => navigation.navigate('Register')}>
+                    <Text style={styles.buttonText}>REGISTER</Text>
                 </TouchableOpacity>
             </View>
 
             <View style={styles.buttonRow}>
-                <TouchableOpacity style={styles.buttonStyles} onPress={onPress}>
-                    <Text style={styles.buttonText}>THIRD</Text>
+                <TouchableOpacity style={styles.buttonStyles} onPress={() => navigation.navigate('Video')}>
+                    <Text style={styles.buttonText}>MEME VIDEOS</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.buttonStyles} onPress={onPress}>
                     <Text style={styles.buttonText}>FORTH</Text>
