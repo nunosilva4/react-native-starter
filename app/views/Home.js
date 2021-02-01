@@ -8,7 +8,7 @@ export default function Home({navigation}) {
 
     return (
         <View style={styles.container}>
-            <Header message='Press to Login'/>
+            <Header navigation={navigation} message='Press to Login'/>
             <Avatar/>
             <Menu navigation={navigation}/>
         </View>

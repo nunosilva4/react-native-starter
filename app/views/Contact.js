@@ -21,7 +21,7 @@ export default function FirstScreen(props) {
 
     return (
         <View style={styles.container}>
-            <Header message='Press to Login'/>
+            <Header navigation={props.navigation} message='Press to Login'/>
             <Text style={styles.heading}>Contact me</Text>
 
             <TextInput

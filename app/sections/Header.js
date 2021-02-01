@@ -1,16 +1,47 @@
-import React, { useState } from 'react';
-import { Platform, StyleSheet, Text, View, Image } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { Platform, StyleSheet, Text, View, Image, Alert } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function Header(props) {
 
     const [logged, setLogged] = useState(false);
+    const [userLoggedIn, setUserLoggedIn] = useState(false);
 
-    let display = logged ? 'Sample User' : props.message;
+    let display = logged ? userLoggedIn : props.message;
+
+    let toggleUser = () => {
+        if (logged) {
+            AsyncStorage.setItem('userLoggedIn', 'none', (err, result) => {
+                setLogged(false);
+                setUserLoggedIn(false);
+            });
+            Alert.alert('User logged out');
+            return;
+        }
+        props.navigation.navigate('Login');
+    }
+
+    useEffect(() => {
+        AsyncStorage.getItem('userLoggedIn', (err, result) => {
+            if(result === 'none') {
+                console.log('none');
+                return;
+            }
+            if(result === null) {
+                AsyncStorage.setItem('userLoggedIn', 'none', (err, result) => {
+                    console.log('set to none');
+                    return;
+                })
+            }
+            setLogged(true);
+            setUserLoggedIn(result);
+        })
+    }, [userLoggedIn])
 
     return (
         <View style={styles.headStyle}>
             <Image style={styles.logoStyle} source={require('./img/kek.png')} />
-            <Text style={styles.headText} onPress={() => setLogged(!logged)}>{display}</Text>
+            <Text style={styles.headText} onPress={toggleUser}>{display}</Text>
         </View>
     );
 

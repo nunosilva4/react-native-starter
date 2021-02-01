@@ -2,41 +2,46 @@ import React, { useState } from 'react';
 import { StyleSheet, Text, View, Alert, TouchableHighlight, TextInput } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-export default function Register({ navigation }) {
+export default function Login({ navigation }) {
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const [confirmPassword, setConfirmPassword] = useState('');
 
-    let cancelRegister = () => {
-        Alert.alert('Registration cancelled');
+    let cancelLogin = () => {
+        Alert.alert('Login cancelled');
         navigation.navigate('Home');
     }
 
-    let registerAccount = () => {
+    let loginUser = () => {
         if (!username || !password) {
             Alert.alert('Please fill all fields')
             return;
         }
-        if (password !== confirmPassword) {
-            Alert.alert('Passwords do not match')
-            return;
-        }
-        AsyncStorage.getItem(username, (err, result) => {
-            if (result !== null) {
-                Alert.alert(`${username} already exists`);
+        AsyncStorage.getItem('userLoggedIn', (err, result) => {
+            if (result !== 'none') {
+                Alert.alert('Already logged in');
+                navigation.navigate('Home');
                 return;
             }
-            AsyncStorage.setItem(username, password, () => {
-                Alert.alert(`${username} account created`);
-                navigation.navigate('Home');
+            AsyncStorage.getItem(username, (err, result) => {
+                if (result !== null) {
+                    if (result !== password) {
+                        Alert.alert('Incorrect Password');
+                        return;
+                    }
+                    AsyncStorage.setItem('userLoggedIn', username, (err, result) => {
+                        Alert.alert(`${username} logged in`);
+                        navigation.navigate('Home');
+                        return;
+                    })
+                }
+                Alert.alert(`No account for user: ${username}`);
             })
         })
     }
-
     return (
         <View style={styles.container}>
-            <Text style={styles.heading}>Register Account</Text>
+            <Text style={styles.heading}>Login</Text>
 
             <TextInput
                 style={styles.inputs}
@@ -55,22 +60,13 @@ export default function Register({ navigation }) {
 
             <Text style={styles.label}>Enter Password</Text>
 
-            <TextInput
-                style={styles.inputs}
-                onChangeText={text => setConfirmPassword(text)}
-                value={confirmPassword}
-                secureTextEntry={true}
-            />
-
-            <Text style={styles.label}>Confirm Password</Text>
-
-            <TouchableHighlight onPress={registerAccount} underlayColor='transparent'>
+            <TouchableHighlight onPress={loginUser} underlayColor='transparent'>
                 <Text style={styles.buttons}>
-                    Register
+                    Login
                 </Text>
             </TouchableHighlight>
 
-            <TouchableHighlight onPress={cancelRegister} underlayColor='transparent'>
+            <TouchableHighlight onPress={cancelLogin} underlayColor='transparent'>
                 <Text style={styles.buttons}>
                     Cancel
                 </Text>
