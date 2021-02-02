@@ -23,8 +23,8 @@ export default function Menu({ navigation }) {
                 <TouchableOpacity style={styles.buttonStyles} onPress={() => navigation.navigate('Video')}>
                     <Text style={styles.buttonText}>MEME VIDEOS</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.buttonStyles} onPress={onPress}>
-                    <Text style={styles.buttonText}>FORTH</Text>
+                <TouchableOpacity style={styles.buttonStyles} onPress={() => navigation.navigate('Quiz')}>
+                    <Text style={styles.buttonText}>QUIZ</Text>
                 </TouchableOpacity>
             </View>
 

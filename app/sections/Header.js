@@ -11,23 +11,23 @@ export default function Header(props) {
 
     let toggleUser = () => {
         if (logged) {
-            AsyncStorage.setItem('userLoggedIn', 'none', (err, result) => {
+            AsyncStorage.setItem('userLoggedIn', 'none', () => {
                 setLogged(false);
+                Alert.alert(`${userLoggedIn} logged out`);
                 setUserLoggedIn(false);
             });
-            Alert.alert('User logged out');
             return;
         }
-        props.navigation.navigate('Login');
+        props.navigation.navigate('Login'); 
     }
 
     useEffect(() => {
         AsyncStorage.getItem('userLoggedIn', (err, result) => {
-            if(result === 'none') {
+            if (result === 'none') {
                 console.log('none');
                 return;
             }
-            if(result === null) {
+            if (result === null) {
                 AsyncStorage.setItem('userLoggedIn', 'none', (err, result) => {
                     console.log('set to none');
                     return;
@@ -36,9 +36,9 @@ export default function Header(props) {
             setLogged(true);
             setUserLoggedIn(result);
         })
-    }, [userLoggedIn])
+    }, [props])
 
-    return (
+    return ( 
         <View style={styles.headStyle}>
             <Image style={styles.logoStyle} source={require('./img/kek.png')} />
             <Text style={styles.headText} onPress={toggleUser}>{display}</Text>

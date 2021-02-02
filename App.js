@@ -6,6 +6,8 @@ import Video from './app/views/Video.js';
 import VideoDetail from './app/views/VideoDetail.js';
 import Register from './app/views/Register.js';
 import Login from './app/views/Login.js';
+import Quiz from './app/views/Quiz.js';
+import QuizFinish from './app/views/QuizFinish.js';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
@@ -22,6 +24,8 @@ export default function App() {
         <Stack.Screen name='VideoDetail' component={VideoDetail}/>
         <Stack.Screen name='Register' component={Register}/>
         <Stack.Screen name='Login' component={Login}/>
+        <Stack.Screen name='Quiz' component={Quiz}/>
+        <Stack.Screen name='QuizFinish' component={QuizFinish}/>
       </Stack.Navigator>      
     </NavigationContainer>
   );

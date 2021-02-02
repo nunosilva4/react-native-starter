@@ -31,11 +31,13 @@ export default function Login({ navigation }) {
                     }
                     AsyncStorage.setItem('userLoggedIn', username, (err, result) => {
                         Alert.alert(`${username} logged in`);
-                        navigation.navigate('Home');
+                        navigation.navigate('Home', Math.random());
                         return;
                     })
                 }
-                Alert.alert(`No account for user: ${username}`);
+                else{
+                    Alert.alert(`No account for user: ${username}`);
+                }
             })
         })
     }
