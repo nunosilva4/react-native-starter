@@ -8,6 +8,7 @@ import Register from './app/views/Register.js';
 import Login from './app/views/Login.js';
 import Quiz from './app/views/Quiz.js';
 import QuizFinish from './app/views/QuizFinish.js';
+import About from './app/views/About.js';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
@@ -26,6 +27,7 @@ export default function App() {
         <Stack.Screen name='Login' component={Login}/>
         <Stack.Screen name='Quiz' component={Quiz}/>
         <Stack.Screen name='QuizFinish' component={QuizFinish}/>
+        <Stack.Screen name='About' component={About}/>
       </Stack.Navigator>      
     </NavigationContainer>
   );

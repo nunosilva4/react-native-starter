@@ -4,7 +4,7 @@ import { StyleSheet, Text, View, Alert, TouchableOpacity } from 'react-native';
 export default function Menu({ navigation }) {
 
     let onPress = () => {
-        Alert.alert('Why Hello There !');
+        Alert.alert('TO DO');
     }
 
     return (
@@ -30,10 +30,10 @@ export default function Menu({ navigation }) {
 
             <View style={styles.buttonRow}>
                 <TouchableOpacity style={styles.buttonStyles} onPress={onPress}>
-                    <Text style={styles.buttonText}>FIFTH</Text>
+                    <Text style={styles.buttonText}>FINISH ME</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.buttonStyles} onPress={onPress}>
-                    <Text style={styles.buttonText}>SIXTH</Text>
+                <TouchableOpacity style={styles.buttonStyles} onPress={() => navigation.navigate('About')}>
+                    <Text style={styles.buttonText}>ABOUT</Text>
                 </TouchableOpacity>
             </View>
 
